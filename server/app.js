@@ -19,6 +19,8 @@ app.use(bodyParser.json());
 // cors
 app.use(cors());
 
+app.use(passport.initialize());  
+
 var config      = require('./config/config');
 var db          = require('./config/db');
 

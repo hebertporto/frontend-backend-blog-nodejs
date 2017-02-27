@@ -15,7 +15,8 @@
 
 		  	function signin (objForm){
 			  	authenticateService.login(objForm).then(function(result){
-			  			$state.go('dashboard');
+							console.log('result login', result);
+							$state.go('dashboard');
 			  		})
 			  		.catch(function(err){
 			  			console.log("error ao logar")
