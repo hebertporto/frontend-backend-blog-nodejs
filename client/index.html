@@ -2,6 +2,7 @@
 <html lang="en" ng-app="app">
     <head>
         <meta charset="utf-8">
+        <base href="/">
         <title>Super Novel Reader</title>
 
         <meta name="description" content="Super Novel Reader">
@@ -22,7 +23,6 @@
 
             <div ui-view></div>
         </div>
-
 
         <script src='lib/angular/angular.js'></script>
         <script src='lib/jquery/dist/jquery.js'></script>
@@ -45,6 +45,7 @@
        <script src="www/services/tokenControlService.js"></script>
        <script src="www/services/authenticateService.js"></script>
        <script src="www/services/registerService.js"></script>
+       <script src="www/services/userService.js"></script>
 
        <script src="www/interceptors/authInterceptor.js"></script>
        <script src="www/interceptors/loadingInterceptor.js"></script>

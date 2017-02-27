@@ -16,8 +16,8 @@
 		'app_interceptors',
 		'satellizer'
 	])
-	.config(['$urlRouterProvider', '$stateProvider', '$authProvider',
-		function  ($urlRouterProvider, $stateProvider, $authProvider) {
+	.config(['$urlRouterProvider', '$stateProvider', '$authProvider','$locationProvider',
+		function  ($urlRouterProvider, $stateProvider, $authProvider, $locationProvider) {
 
 		   $authProvider.loginUrl = "http://localhost:3000/users/authenticate";
 
@@ -46,7 +46,7 @@
                 controller: 'dashboardCtrl',
                 controllerAs: 'vm'
             });
-                                ;
+      $locationProvider.html5Mode(true);
 			$urlRouterProvider.otherwise('/signin');
 		}])
 	.config(['$httpProvider', function($httpProvider) {
