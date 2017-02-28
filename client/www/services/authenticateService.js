@@ -7,13 +7,13 @@
 		authenticateService.$inject = ['$state', 'tokenControlService', '$auth'];
 
 		function authenticateService ($state, tokenControlService, $auth) {
-			
+
 			var _getAuthenticate = function () {
 				var token = tokenControlService.getItem('token');
 
 				if (token) return true;
 
-				return false; 
+				return false;
 
 			}
 
@@ -21,6 +21,7 @@
 				return $auth.login(objForm)
 					.then(function (result){
 						tokenControlService.setItem('token', result.data.data.token);
+						console.log(result.data.data);
 						return result.data.status;
 					})
 					.catch(function (err){

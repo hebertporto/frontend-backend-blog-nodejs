@@ -50,7 +50,7 @@
 			$urlRouterProvider.otherwise('/signin');
 		}])
 	.config(['$httpProvider', function($httpProvider) {
-		$httpProvider.interceptors.push('loadingInterceptor');
+		$httpProvider.interceptors.push('AuthInterceptor');
 	}])
 	.run(function  ($rootScope, $state, authenticateService) {
 

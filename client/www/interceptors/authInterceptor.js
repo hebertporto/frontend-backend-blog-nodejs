@@ -4,24 +4,26 @@
 		.module('app_interceptors')
 		.factory('AuthInterceptor', AuthInterceptor);
 
-		AuthInterceptor.$inject = [ 'authenticateService', '$q', 'tokenControlService' ];
+		AuthInterceptor.$inject = ['$q','$location', '$injector' ];
 
-		function AuthInterceptor (authenticateService, $q, tokenControlService) {
+		function AuthInterceptor ( $q,  $location, $injector) {
 			return {
 				request: function (config) {
 					config.headers = config.headers || {};
 
-					if(authenticateService.getAuthenticate()){
-						config.headers['Authorization'] = tokenControlService.getItem('token');
+					if($injector.get('authenticateService').getAuthenticate()){
+						console.log('injetou o token');
+						config.headers['Authorization'] = $injector.get('tokenControlService').getItem('token');
 					}
 
 					return config;
 				},
 
 				responseError: function (response) {
-					if (response.data.status === 401 || response.data.status === 403){
-		
-						 // $injector.get('$state').transitionTo('login');
+					console.log('encontrou 401 e redirecioou', response);
+					if (response.status === 401 || response.status === 403){
+							console.log('encontrou 401 e redirecioou');
+							$location.path('/signin');
 					}
 
 					return $q.reject(response);
