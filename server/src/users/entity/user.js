@@ -21,6 +21,10 @@ var User    = mongoose.Schema({
 		enum : ['yes','not'],
 		default: 'not'
 	},
+	created_at:{
+		type: Date,
+		default: Date.now
+	},
 	roles: {
 		type : String,
 		enum : ['User','Owner','Admin'],
