@@ -20,7 +20,6 @@
 				},
 
 				responseError: function (response) {
-					console.log('encontrou 401 e redirecioou', response);
 					if (response.status === 401 || response.status === 403){
 							console.log('encontrou 401 e redirecioou');
 							$location.path('/signin');

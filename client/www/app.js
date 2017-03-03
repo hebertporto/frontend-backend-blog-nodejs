@@ -14,7 +14,8 @@
 		'app_services',
 		'app_components',
 		'app_interceptors',
-		'satellizer'
+		'satellizer',
+		'ngFileUpload'
 	])
 	.config(['$urlRouterProvider', '$stateProvider', '$authProvider','$locationProvider',
 		function  ($urlRouterProvider, $stateProvider, $authProvider, $locationProvider) {
@@ -40,6 +41,12 @@
                 controller: 'authCtrl',
                 controllerAs: 'vm'
             })
+						.state('novel', {
+                url: '/novel',
+                templateUrl: 'templates/novels/novels.html',
+                controller: 'novelCtrl',
+								controllerAs: 'vm'
+						})
             .state('dashboard', {
                 url: '/dashboard',
                 templateUrl: 'templates/dashboard/dashboard.html',

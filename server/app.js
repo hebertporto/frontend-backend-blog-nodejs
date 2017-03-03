@@ -11,6 +11,10 @@ var passport    = require('passport');
 var app         = express();
 var server      = http.createServer(app);
 
+var path = require('path');
+
+app.use('/public', express.static(path.join(__dirname + '/public')));
+
 // middlewares
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: true}));
@@ -19,7 +23,7 @@ app.use(bodyParser.json());
 // cors
 app.use(cors());
 
-app.use(passport.initialize());  
+app.use(passport.initialize());
 
 var config      = require('./config/config');
 var db          = require('./config/db');
