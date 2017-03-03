@@ -53,7 +53,7 @@
                 controller: 'dashboardCtrl',
                 controllerAs: 'vm'
             });
-      $locationProvider.html5Mode(true);
+      // $locationProvider.html5Mode(true);
 			$urlRouterProvider.otherwise('/signin');
 		}])
 	.config(['$httpProvider', function($httpProvider) {
