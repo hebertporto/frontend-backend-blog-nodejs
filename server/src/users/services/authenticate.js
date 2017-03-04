@@ -32,7 +32,8 @@ var Service = function (req, res, next) {
 						  .json({
 							  	 status : true,
 							  	 data   : {
-									  	 	token : token
+									  	 	token : token,
+												id: user._id
 							  	 }
 						  });
 					}

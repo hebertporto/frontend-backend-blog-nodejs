@@ -22,9 +22,14 @@
            });
       }
 
+			var _getCurrentUser = function () {
+				return localStorage.getItem('token')
+			}
+
 			return {
 				listAll : _listAll,
-        changeUserApprove : _changeUserApprove
+        changeUserApprove : _changeUserApprove,
+				getCurrentUser: _getCurrentUser
 			}
 		}
 })();

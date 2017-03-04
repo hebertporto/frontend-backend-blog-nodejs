@@ -18,10 +18,6 @@ var Novel    = mongoose.Schema({
     type      : [String],
 		required  : true
   },
-  thumbnail_url:{
-    type : String,
-    require: true
-  },
   cover_url:{
     type : String,
     require: true

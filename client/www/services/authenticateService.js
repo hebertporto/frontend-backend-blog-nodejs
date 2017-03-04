@@ -21,7 +21,7 @@
 				return $auth.login(objForm)
 					.then(function (result){
 						tokenControlService.setItem('token', result.data.data.token);
-						console.log(result.data.data);
+						tokenControlService.setItem('id', result.data.data.id);
 						return result.data.status;
 					})
 					.catch(function (err){

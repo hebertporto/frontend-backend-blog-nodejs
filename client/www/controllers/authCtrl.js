@@ -15,14 +15,11 @@
 
 		  	function signin (objForm){
 			  	authenticateService.login(objForm).then(function(result){
-							console.log('result login', result);
 							$state.go('dashboard');
 			  		})
 			  		.catch(function(err){
 			  			console.log("error ao logar")
 			  		});
-
-		  		console.log("logando");
 		  	}
 
 		  	function signup(objParam){
