@@ -3,10 +3,12 @@
     angular
           .module("app")
           .value("config", {
-              baseUrl   	: "http://localhost:3000/",
+              baseUrl   	: "https://stark-beach-53351.herokuapp.com/",
               apiUrl    	: "",
               loginUrl  	: "",
               imgUrl		  : "",
               imgNotFound : ""
     });
 })();
+
+ //  http://localhost:3000/
