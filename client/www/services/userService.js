@@ -23,7 +23,7 @@
       }
 
 			var _getCurrentUser = function () {
-				return localStorage.getItem('token')
+				return localStorage.getItem('id');
 			}
 
 			return {

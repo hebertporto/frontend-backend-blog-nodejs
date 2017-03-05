@@ -1,55 +1,23 @@
-<button ui-sref="home">Home</button>
-<br /><br /><br />
-
-<form class="form" name="form" novalidate>
-  <div class="col-xs-12 col-sm-12 col-md-4 form-group">
-      <label>Nome da Novel</label><br/>
-      <input class="form-control" ng-model="novel.name"
-             type="text" name="nome" placeholder="Insira o Nome" required>
-  </div>
-
-  <div class="col-xs-12 col-sm-12 col-md-4 form-group">
-    <label>Descrição</label><br/>
-    <textarea class="form-control"
-              style="height: 34px;padding-top: 8px;" name="conteudo" rows="3"
-              ng-model="novel.description"
-              placeholder="Insira a descrição da Novel" required></textarea>
-  </div>
-
-  <div class="col-xs-12 col-sm-12 col-md-4 form-group">
-      <label>Nome do Autor</label><br/>
-      <input class="form-control" ng-model="novel.author"
-             type="text" name="nome" placeholder="Insira o Nome" required>
-  </div>
-
-  <div class="col-xs-12 col-sm-12 col-md-4 form-group">
-      <label>Scan Responsavel Pelo Projeto</label><br/>
-      <input class="form-control" ng-model="novel.translation_team"
-             type="text" name="nome" placeholder="Insira o Nome" required>
-  </div>
-
-  <div class="col-xs-12 col-sm-12 col-md-4 form-group">
-    <label>Imagem de Capa: </label>
-    <button type="file" ngf-select
-    name="cover"
-    ng-model="novel.cover"
-    accept="image/*" ngf-max-height="1000" ngf-max-size="1MB">
-    Escolher Arquivo</button>
-  </div>
-  <button type="submit" ng-click="vm.cadastrar(novel)">Enviar</button><br />
-</form>
+<button class="btn btn-success" ui-sref="home">Home</button>
 
 
-<!-- id
-nome
-descricação
-autor: []
-time_traducao: []
-thumbnail_url
-cover_url
-data_inicio
-data_fim
-users: []
-created_at
--->
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Título da Novel</th>
+            <th>Descrição</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="novel in vm.novels track by $index">
+            <td>{{novel.name}}</td>
+            <td>{{novel.description}}</td>
+            <td>
+              <button ng-click="vm.editNovel(novel)">Editar</button>
+              <button ng-click="vm.addChapter(novel)">Add Capítulo</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
 
+<button class="btn btn-success" ui-sref="novel-new"> Create Novel</button>

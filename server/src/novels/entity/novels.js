@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
 var Novel    = mongoose.Schema({
 	name : {
@@ -10,7 +11,7 @@ var Novel    = mongoose.Schema({
 		type      : String,
 		required  : true
 	},
-  autor: {
+  author: {
     type      : [String],
 		required  : true
   },
@@ -21,15 +22,15 @@ var Novel    = mongoose.Schema({
   cover_url:{
     type : String,
     require: true
-  }
+  },
   date_start: {
     type: Date
-  }
+  },
   date_end: {
     type: Date
   },
 	users: {
-		type : ObjectId,
+		type : [Schema.ObjectId],
     ref: 'User'
 	},
   created_at:{

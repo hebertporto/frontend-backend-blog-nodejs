@@ -12,16 +12,13 @@
 					config.headers = config.headers || {};
 
 					if($injector.get('authenticateService').getAuthenticate()){
-						console.log('injetou o token');
 						config.headers['Authorization'] = $injector.get('tokenControlService').getItem('token');
 					}
-
 					return config;
 				},
 
 				responseError: function (response) {
 					if (response.status === 401 || response.status === 403){
-							console.log('encontrou 401 e redirecioou');
 							$location.path('/signin');
 					}
 

@@ -4,35 +4,46 @@
 			.module('app_controllers')
 			.controller('novelCtrl', novelCtrl);
 
-    novelCtrl.$inject = ['$http', 'Upload'];
+    novelCtrl.$inject = ['$http', 'Upload', 'userService', 'novelService', '$state'];
 
-    function novelCtrl($http, Upload) {
+    function novelCtrl($http, Upload, userService, novelService, $state) {
 
         var vm = this;
         vm.cadastrar = cadastrar;
+        vm.novels = [];
+        editNovel = editNovel;
+        addChapter = addChapter;
 
 
-        $http.get('http://localhost:3000/teste').then(function (result) {
-           console.log('GET from teste', result);
-        });
-        
-        function cadastrar(cover) {
+        if ($state.current.name === 'novel')
+            getNovels();
 
+        function editNovel(){
+
+        }
+
+        function addChapter(){
+
+        }
+
+        function getNovels(){
+          novelService.getNovels().then(function(result){
+            console.log('getNovels', result);
+              vm.novels = result.data;
+          });
+        }
+
+        function cadastrar(novel) {
             var fd = new FormData();
-            fd.append('cover', cover);
+            fd.append('cover', novel.cover);
 
-            $http.post('http://localhost:3000/teste/upload', fd, {
-              transformRequest: angular.identity,
-              headers: {'Content-Type': undefined}
-           }).then(function (result) {
-             console.log('resultado da imagem', result.data.img_url);
-                var teste = {};
-                teste.name = 'gravando direto';
-                teste.img_url = result.data.img_url;
-                $http.post('http://localhost:3000/teste', teste).then(function (result) {
-                    console.log('resultado do cadastro completo', result);
+            novelService.upload(fd).then(function (result) {
+                  novel.users = userService.getCurrentUser();
+                  novel.cover_url = result.img_url;
+                novelService.add(novel).then(function (result) {
+                   console.log('cadstrou a novel', result);
                 });
-           });
+            });
         }
     }
 

@@ -1,4 +1,4 @@
-var Novels   = require('./../entity/novels');
+var Novels   = require('./../../novels/entity/novels');
 var path = require('path');
 
 var Service = function(req, res, next) {
@@ -9,7 +9,12 @@ var Service = function(req, res, next) {
  }
 
  if(!req.params.id){
-	 find = Novels.find({}).exec();
+	 find = Novels.find({},{
+		 name: 1,
+		 description: 1,
+		 author:1,
+		 translation_team: 1,
+		 cover_url: 1}).exec();
  }
 
  find
@@ -23,7 +28,9 @@ var Service = function(req, res, next) {
 			 }
 
 			 result.map(function (item) {
-						 return item.img_url = req.protocol + '://' + req.get('host') + '/public/uploads/' + item.img_url;
+						 item.img_url = req.protocol + '://' + req.get('host') + '/public/uploads/' + item.img_url;
+						 item.translation_team = [];
+						 return item;
 			 });
 			 return res.status(200)
 						 .json({
