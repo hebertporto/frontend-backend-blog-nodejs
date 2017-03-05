@@ -29,7 +29,6 @@ var Service = function(req, res, next) {
 
 			 result.map(function (item) {
 						 item.img_url = req.protocol + '://' + req.get('host') + '/public/uploads/' + item.img_url;
-						 item.translation_team = [];
 						 return item;
 			 });
 			 return res.status(200)

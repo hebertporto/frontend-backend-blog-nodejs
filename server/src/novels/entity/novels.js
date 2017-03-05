@@ -12,11 +12,11 @@ var Novel    = mongoose.Schema({
 		required  : true
 	},
   author: {
-    type      : [String],
+    type      : String,
 		required  : true
   },
   translation_team: {
-    type      : [String],
+    type      : String,
 		required  : true
   },
   cover_url:{

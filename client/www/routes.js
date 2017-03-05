@@ -33,7 +33,7 @@
 								controllerAs: 'vm'
 						})
             .state('novel-new', {
-                url: '/novel',
+                url: '/novel-new',
                 templateUrl: 'templates/novels/novels-new.html',
                 controller: 'novelCtrl',
 								controllerAs: 'vm'

@@ -41,7 +41,7 @@
                   novel.users = userService.getCurrentUser();
                   novel.cover_url = result.img_url;
                 novelService.add(novel).then(function (result) {
-                   console.log('cadstrou a novel', result);
+                   $state.go('novel');
                 });
             });
         }
