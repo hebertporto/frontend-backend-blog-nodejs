@@ -51,6 +51,12 @@
                 controller: 'chapterCtrl',
 								controllerAs: 'vm'
 						})
+            .state('chapter-edit', {
+                url: '/chapter-edit',
+                templateUrl: 'templates/chapter/chapter-new.html',
+                controller: 'chapterCtrl',
+								controllerAs: 'vm'
+						})
             .state('dashboard', {
                 url: '/dashboard',
                 templateUrl: 'templates/dashboard/dashboard.html',

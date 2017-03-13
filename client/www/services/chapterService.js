@@ -10,12 +10,12 @@
 
         var chapter = {};
 
-        var _set = function (chapter) {
-            chapter = chapter;
+        var _set = function (chapterSet) {
+            chapter = chapterSet;
         }
 
         var _get = function () {
-            return novel;
+            return chapter;
         }
 
 
