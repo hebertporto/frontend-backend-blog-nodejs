@@ -29,6 +29,13 @@
              });
         }
 
+        var _deletar = function (id){
+          return $http.delete(config.baseUrl + 'chapters/'+id)
+             .then(function (result) {
+               return result.data;
+             });
+        }
+
         var _update = function (objParam){
           return $http.put(config.baseUrl + 'chapters/'+objParam._id, objParam)
              .then(function (result) {
@@ -41,7 +48,8 @@
   				getAll : _getAll,
           add : _add,
           getChapter : _getChapter,
-          update : _update
+          update : _update,
+          deletar : _deletar
   			}
       }
 })();

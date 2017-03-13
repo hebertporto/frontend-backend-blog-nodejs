@@ -14,6 +14,7 @@
 					vm.goChapter = goChapter;
 					vm.chapter = {};
 					vm.novo = true;
+					vm.deleteChapter = deleteChapter;
 
           var novel = novelService.get();
 
@@ -24,9 +25,14 @@
 						vm.novo = false;
 						var id = chapterService.get()._id;
 						chapterAPIService.getChapter(id).then(function(result){
-							console.log('get chapter', result.data);
 							vm.chapter = result.data;
 						});
+					}
+					function deleteChapter(id){
+						chapterAPIService.deletar(id)
+							.then(function(result){
+									$state.go('chapter', {}, { reload: true });
+							});
 					}
 
 					function goChapter(chapter) {
@@ -34,7 +40,7 @@
 							$state.go('chapter-edit');
 					}
 
-          function getChapters(){
+          function getChapters() {
 						var param = {};
 						param.novel_id = novelService.get()._id;
             chapterAPIService.getAll(param)
@@ -51,13 +57,11 @@
                 .then(function(result){
                     $state.go('chapter');
                 });
-
           }
 
 					function editChapter(chapter){
 						chapterAPIService.update(chapter)
 							.then(function(result){
-								console.log('result update', result.data);
 									$state.go('chapter');
 							});
 					}
