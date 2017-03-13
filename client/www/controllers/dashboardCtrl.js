@@ -18,7 +18,6 @@
 			function getUsers(){
 				userService.listAll().then(function (result) {
 					  vm.users = result.data;
-						console.log('users', result.data);
 				});
 			}
 

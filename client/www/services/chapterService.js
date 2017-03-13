@@ -2,16 +2,16 @@
   'use strict';
    angular
       .module('app_services')
-      .factory('novelService', novelService);
+      .factory('chapterService', chapterService);
 
-      novelService.$inject = [];
+      chapterService.$inject = [];
 
-      function novelService(){
+      function chapterService(){
 
-        var novel = {};
+        var chapter = {};
 
-        var _set = function (novelSelected) {
-            novel = novelSelected;
+        var _set = function (chapter) {
+            chapter = chapter;
         }
 
         var _get = function () {

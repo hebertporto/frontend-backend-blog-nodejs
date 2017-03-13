@@ -1,0 +1,22 @@
+<button class="btn btn-success" ui-sref="home">Home</button>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Capítulo</th>
+            <th>Título</th>
+            <th>Descrição</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="chapter in vm.chapters track by $index">
+            <td>{{chapter.number}}</td>
+            <td>{{chapter.title}}</td>
+            <td>
+              <button ng-click="vm.editChapter(chapter)">Editar</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<button class="btn btn-success" ui-sref="chapter-new"> Create Capítulo</button>

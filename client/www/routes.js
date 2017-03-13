@@ -5,8 +5,8 @@
    .config(['$urlRouterProvider', '$stateProvider', '$authProvider','$locationProvider',
 		function  ($urlRouterProvider, $stateProvider, $authProvider, $locationProvider) {
 
-      //  $authProvider.loginUrl = "http://localhost:3000/users/authenticate";
-		   $authProvider.loginUrl = "https://stark-beach-53351.herokuapp.com/users/authenticate";
+       $authProvider.loginUrl = "http://localhost:3000/users/authenticate";
+		  //  $authProvider.loginUrl = "https://stark-beach-53351.herokuapp.com/users/authenticate";
 
 		   $stateProvider
             .state('home', {
@@ -37,6 +37,18 @@
                 url: '/novel-new',
                 templateUrl: 'templates/novels/novels-new.html',
                 controller: 'novelCtrl',
+								controllerAs: 'vm'
+						})
+            .state('chapter', {
+                url: '/chapter',
+                templateUrl: 'templates/chapter/chapter.html',
+                controller: 'chapterCtrl',
+								controllerAs: 'vm'
+						})
+            .state('chapter-new', {
+                url: '/chapter-new',
+                templateUrl: 'templates/chapter/chapter-new.html',
+                controller: 'chapterCtrl',
 								controllerAs: 'vm'
 						})
             .state('dashboard', {

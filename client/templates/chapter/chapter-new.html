@@ -1,0 +1,44 @@
+<button class="btn btn-success" ui-sref="home">Home</button>
+<br /><br /><br />
+<div class="row">
+  <div class="col-md-12">
+    <form class="form form-horizontal" name="form" novalidate>
+
+      <div class="form-group">
+        <label>Número do Capitulo</label><br/>
+        <input class="form-control" ng-model="chapter.number"
+        type="text" name="nome" placeholder="Insira o Numero" required>
+      </div>
+
+      <div class="form-group">
+        <label>Título</label><br/>
+        <input class="form-control" ng-model="chapter.title"
+        type="text" name="nome" placeholder="Insira o Título" required>
+      </div>
+
+      <div class="form-group">
+        <label>Conteúdo do Capítulo</label><br/>
+        <textarea class="form-control"
+                  style="height: 34px; padding-top: 8px;" name="conteudo" rows="3"
+                  ng-model="chapter.content"
+                  placeholder="Insira o capítulo" required>
+        </textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Tradutores</label><br/>
+        <input class="form-control" ng-model="chapter.translators"
+        type="text" name="nome" placeholder="Insira os Tradutores" required>
+      </div>
+
+      <div class="form-group">
+        <label>Revisores</label><br/>
+        <input class="form-control" ng-model="chapter.revisors"
+        type="text" name="nome" placeholder="Insira o Nome" required>
+      </div>
+
+
+      <button class="btn btn-primary" type="submit" ng-click="vm.createChapter(chapter)">Enviar</button><br />
+    </form>
+  </div>
+</div>

@@ -4,15 +4,15 @@
 			.module('app_controllers')
 			.controller('novelCtrl', novelCtrl);
 
-    novelCtrl.$inject = ['$http', 'Upload', 'userService', 'novelService', '$state'];
+    novelCtrl.$inject = ['$http', 'Upload', 'userService', 'novelAPIService', '$state', 'novelService'];
 
-    function novelCtrl($http, Upload, userService, novelService, $state) {
+    function novelCtrl($http, Upload, userService, novelAPIService, $state, novelService) {
 
         var vm = this;
         vm.cadastrar = cadastrar;
         vm.novels = [];
-        editNovel = editNovel;
-        addChapter = addChapter;
+        vm.editNovel = editNovel;
+        vm.goChapters = goChapters;
 
 
         if ($state.current.name === 'novel')
@@ -22,12 +22,13 @@
 
         }
 
-        function addChapter(){
-
+        function goChapters(novel){
+          novelService.set(novel);
+          $state.go('chapter');
         }
 
         function getNovels(){
-          novelService.getNovels().then(function(result){
+          novelAPIService.getNovels().then(function(result){
             console.log('getNovels', result);
               vm.novels = result.data;
           });
@@ -37,10 +38,10 @@
             var fd = new FormData();
             fd.append('cover', novel.cover);
 
-            novelService.upload(fd).then(function (result) {
+            novelAPIService.upload(fd).then(function (result) {
                   novel.users = userService.getCurrentUser();
                   novel.cover_url = result.img_url;
-                novelService.add(novel).then(function (result) {
+                novelAPIService.add(novel).then(function (result) {
                    $state.go('novel');
                 });
             });

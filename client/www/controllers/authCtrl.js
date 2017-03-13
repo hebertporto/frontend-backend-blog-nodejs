@@ -25,7 +25,7 @@
 		  	function signup(objParam){
 					registerService.register(objParam)
 					.then(function (result) {
-						 console.log('resultado do cadastro', result);
+						  $state.go('dashboard');
 					});
 		  	}
 		  }
