@@ -30,13 +30,15 @@
       </div>
 
       <div class="form-group">
-        <label>Imagem de Capa: </label>
+        <label>Imagem de Capa: Tamanho da imagem deve ser 600x200</label>
         <button type="file" ngf-select
         name="cover"
+        ngf-min-height="200" ngf-max-height="200" ngf-min-width="600" ngf-max-width="600"
         ng-model="novel.cover"
         class="btn btn-success"
         accept="image/*" ngf-max-height="1000" ngf-max-size="1MB">
         Escolher Arquivo</button>
+        <span ng-if="novel.cover">{{novel.conver.name}}</span>
       </div>
       <button class="btn btn-primary" type="submit" ng-click="vm.cadastrar(novel)">Enviar</button><br />
     </form>

@@ -5,8 +5,8 @@
    .config(['$urlRouterProvider', '$stateProvider', '$authProvider','$locationProvider',
 		function  ($urlRouterProvider, $stateProvider, $authProvider, $locationProvider) {
 
-       $authProvider.loginUrl = "http://localhost:3000/users/authenticate";
-		  //  $authProvider.loginUrl = "https://stark-beach-53351.herokuapp.com/users/authenticate";
+      //  $authProvider.loginUrl = "http://localhost:3000/users/authenticate";
+       $authProvider.loginUrl = "https://stark-beach-53351.herokuapp.com/users/authenticate";
 
 		   $stateProvider
             .state('home', {
