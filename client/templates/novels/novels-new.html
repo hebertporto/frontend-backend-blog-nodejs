@@ -12,7 +12,7 @@
       <div class="form-group">
         <label>Descrição</label><br/>
         <textarea class="form-control"
-        style="height: 34px;padding-top: 8px;" name="conteudo" rows="3"
+        style="height: 34px;padding-top: 8px;" name="conteudo" rows="20"
         ng-model="novel.description"
         placeholder="Insira a descrição da Novel" required></textarea>
       </div>
@@ -36,7 +36,7 @@
         ngf-min-height="200" ngf-max-height="200" ngf-min-width="600" ngf-max-width="600"
         ng-model="novel.cover"
         class="btn btn-success"
-        accept="image/*" ngf-max-height="1000" ngf-max-size="1MB">
+        accept="image/*" ngf-max-size="1MB">
         Escolher Arquivo</button>
         <span ng-if="novel.cover">{{novel.conver.name}}</span>
       </div>
