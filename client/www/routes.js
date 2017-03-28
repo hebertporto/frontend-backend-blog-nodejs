@@ -39,6 +39,12 @@
                 controller: 'novelCtrl',
 								controllerAs: 'vm'
 						})
+            .state('novel-edit', {
+                url: '/novel-edit',
+                templateUrl: 'templates/novels/novels-new.html',
+                controller: 'novelCtrl',
+								controllerAs: 'vm'
+						})
             .state('chapter', {
                 url: '/chapter',
                 templateUrl: 'templates/chapter/chapter.html',

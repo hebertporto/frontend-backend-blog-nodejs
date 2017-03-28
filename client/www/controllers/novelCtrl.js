@@ -13,13 +13,33 @@
         vm.novels = [];
         vm.editNovel = editNovel;
         vm.goChapters = goChapters;
+        vm.novel = {};
+        vm.goNovel = goNovel;
+        vm.novo = true;
 
 
         if ($state.current.name === 'novel')
             getNovels();
 
-        function editNovel(){
+        if($state.current.name === 'novel-edit'){
+          vm.novo = false;
+          var id = novelService.get()._id;
+          novelAPIService.getNovel(id).then(function(result){
+            vm.novel = result.data;
+            console.log('result', result.data);
+          });
+        }
 
+        function goNovel(novel){
+            novelService.set(novel);
+            $state.go('novel-edit');
+        }
+
+        function editNovel(novel){
+          novelAPIService.update(novel).then(function (result) {
+            console.log('resultado de update novel', result);
+             $state.go('novel');
+          });
         }
 
         function goChapters(novel){

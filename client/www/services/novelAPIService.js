@@ -15,12 +15,26 @@
           });
       }
 
+			var _getNovel = function (id) {
+          return $http.get(config.baseUrl + 'novels/' + id)
+          .then(function (result) {
+            return result.data;
+          });
+      }
+
       var _add = function (objUser){
         return $http.post(config.baseUrl + 'novels/', objUser)
            .then(function (result) {
              return result.data;
            });
       }
+
+			var _update = function (novel) {
+				return $http.put(config.baseUrl + 'novels/'+novel._id, novel)
+					 .then(function (result) {
+						 return result.data;
+					 });
+			}
 
 			var _upload = function (img) {
         return $http.post(config.baseUrl + 'novels/upload', img, {
@@ -35,7 +49,9 @@
 			return {
 				getNovels : _getNovels,
         add : _add,
-				upload: _upload
+				upload: _upload,
+				getNovel: _getNovel,
+				update: _update
 			}
 		}
 })();
