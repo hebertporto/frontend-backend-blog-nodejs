@@ -55,19 +55,16 @@
         }
 
         function cadastrar(novel) {
-          console.log(novel);
-          console.log('name da novel', novel.cover.name);
+            var fd = new FormData();
+            fd.append('cover', novel.cover);
 
-            // var fd = new FormData();
-            // fd.append('cover', novel.cover);
-            //
-            // novelAPIService.upload(fd).then(function (result) {
-            //       novel.users = userService.getCurrentUser();
-            //       novel.cover_url = result.img_url;
-            //     novelAPIService.add(novel).then(function (result) {
-            //        $state.go('novel');
-            //     });
-            // });
+            novelAPIService.upload(fd).then(function (result) {
+                  novel.users = userService.getCurrentUser();
+                  novel.cover_url = result.img_url;
+                novelAPIService.add(novel).then(function (result) {
+                   $state.go('novel');
+                });
+            });
         }
     }
 

@@ -1,5 +1,7 @@
 <button class="btn btn-success" ui-sref="home">Home</button>
+<button class="btn btn-success" ui-sref="novel">Lista de Novels</button>
 <br /><br /><br />
+<h3>Novel: {{vm.novel.name}}</h3>
 <div class="row">
   <div class="col-md-12">
     <form class="form form-horizontal" name="form" novalidate>
@@ -19,7 +21,7 @@
       <div class="form-group">
         <label>Conteúdo do Capítulo</label><br/>
         <textarea class="form-control"
-                  style="height: 34px; padding-top: 8px;" name="conteudo" rows="3"
+                  name="conteudo" rows="6"
                   ng-model="vm.chapter.content"
                   placeholder="Insira o capítulo" required>
         </textarea>

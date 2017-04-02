@@ -17,7 +17,8 @@
 					vm.deleteChapter = deleteChapter;
 
           var novel = novelService.get();
-
+					vm.novel = novel;
+					
           if ($state.current.name === 'chapter')
               getChapters();
 
