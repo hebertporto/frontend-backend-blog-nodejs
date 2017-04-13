@@ -5,13 +5,12 @@
     <thead>
         <tr>
             <th>Título da Novel</th>
-            <th>Descrição</th>
+            <th>Ações</th>
         </tr>
     </thead>
     <tbody>
         <tr ng-repeat="novel in vm.novels track by $index">
             <td>{{novel.name}}</td>
-            <td>{{novel.description}}</td>
             <td>
               <button ng-click="vm.goNovel(novel)">Editar</button>
               <button ng-click="vm.goChapters(novel)">Capítulos</button>
