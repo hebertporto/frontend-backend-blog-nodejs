@@ -1,22 +1,25 @@
-<button class="btn btn-success" ui-sref="home">Home</button>
-
-
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>Título da Novel</th>
-            <th>Ações</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr ng-repeat="novel in vm.novels track by $index">
-            <td>{{novel.name}}</td>
-            <td>
-              <button ng-click="vm.goNovel(novel)">Editar</button>
-              <button ng-click="vm.goChapters(novel)">Capítulos</button>
-            </td>
-        </tr>
-    </tbody>
-</table>
-
-<button class="btn btn-success" ui-sref="novel-new"> Create Novel</button>
+<div class="row">
+    <div class="col-xs-12 col-md-12">
+        <h2>Novels Cadastradas</h2>
+        <div style="margin-bottom: 20px;">
+            <button class="btn btn-success" ui-sref="novel-new"> Cadastrar Novel</button>
+        </div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Título da Novel</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="novel in vm.novels track by $index">
+                    <td>{{novel.name}}</td>
+                    <td>
+                      <button ng-click="vm.goNovel(novel)">Editar</button>
+                      <button ng-click="vm.goChapters(novel)">Capítulos</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

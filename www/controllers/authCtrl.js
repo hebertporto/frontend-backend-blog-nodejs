@@ -15,7 +15,7 @@
 
 		  	function signin (objForm){
 			  	authenticateService.login(objForm).then(function(result){
-							$state.go('dashboard');
+							$state.go('novel');
 			  		})
 			  		.catch(function(err){
 			  			console.log("error ao logar")
@@ -25,7 +25,7 @@
 		  	function signup(objParam){
 					registerService.register(objParam)
 					.then(function (result) {
-						  $state.go('dashboard');
+						  $state.go('novel');
 					});
 		  	}
 		  }
