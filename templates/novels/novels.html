@@ -15,8 +15,8 @@
                 <tr ng-repeat="novel in vm.novels track by $index">
                     <td>{{novel.name}}</td>
                     <td>
-                      <button ng-click="vm.goNovel(novel)">Editar</button>
-                      <button ng-click="vm.goChapters(novel)">Capítulos</button>
+                      <button class="btn btn-warning btn-sm" ng-click="vm.goNovel(novel)">Editar</button>
+                      <button class="btn btn-success btn-sm" ng-click="vm.goChapters(novel)">Add Capítulo</button>
                     </td>
                 </tr>
             </tbody>

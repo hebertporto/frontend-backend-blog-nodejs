@@ -1,4 +1,5 @@
-<button class="btn btn-success" ui-sref="home">Home</button>
+<button class="btn btn-primary" ui-sref="novel">Lista de Novels</button>
+
 <br /><br /><br />
 <div class="row">
   <div class="col-md-12">
@@ -46,8 +47,10 @@
         Escolher Arquivo</button>
         <span ng-if="novel.cover">{{novel.conver.name}}</span>
       </div>
-      <button ng-if="vm.novo" class="btn btn-primary" type="submit" ng-click="vm.cadastrar(vm.novel)">Enviar</button><br />
-      <button ng-if="!vm.novo" class="btn btn-primary" type="submit" ng-click="vm.editNovel(vm.novel)">Atualizar</button><br />
+      <div class="form-group">
+        <button ng-if="vm.novo" class="btn btn-primary" type="submit" ng-click="vm.cadastrar(vm.novel)">Enviar</button>
+        <button ng-if="!vm.novo" class="btn btn-primary" type="submit" ng-click="vm.editNovel(vm.novel)">Atualizar</button>
+      </div>
     </form>
   </div>
 </div>

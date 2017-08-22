@@ -17,8 +17,8 @@
             <td>{{chapter.number}}</td>
             <td>{{chapter.title}}</td>
             <td>
-              <button ng-click="vm.goChapter(chapter)">Editar</button>
-              <button ng-click="vm.deleteChapter(chapter._id)">Deletar</button>
+              <button class="btn btn-warning btn-sm" ng-click="vm.goChapter(chapter)">Editar</button>
+              <button class="btn btn-danger btn-sm" ng-click="vm.deleteChapter(chapter._id)">Deletar</button>
             </td>
         </tr>
     </tbody>
