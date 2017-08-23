@@ -3,9 +3,9 @@
 	angular.module('app_controllers')
 		   .controller('chapterCtrl', chapterCtrl);
 
-		   chapterCtrl.$inject = ['$state', 'novelService', 'chapterAPIService', 'chapterService'];
+		   chapterCtrl.$inject = ['$state', 'novelService', 'chapterAPIService', 'chapterService', 'paginationService'];
 
-		   function chapterCtrl($state, novelService, chapterAPIService, chapterService){
+		   function chapterCtrl($state, novelService, chapterAPIService, chapterService, paginationService){
 
 		   	  var vm = this;
           vm.chapters = [];
@@ -18,7 +18,18 @@
 
           var novel = novelService.get();
 					vm.novel = novel;
-					
+
+					vm.pager = {};
+					vm.setPage = setPage;
+
+					function setPage(page) {
+							if (page < 1 || page > vm.pager.totalPages) {
+									return;
+							}
+							vm.pager = paginationService.GetPager(vm.chapters.length, page);
+							vm.items = vm.chapters.slice(vm.pager.startIndex, vm.pager.endIndex + 1);
+					}
+
           if ($state.current.name === 'chapter')
               getChapters();
 
@@ -46,7 +57,8 @@
 						param.novel_id = novelService.get()._id;
             chapterAPIService.getAll(param)
               .then(function(result){
-                  vm.chapters = result.data;
+									vm.chapters = result.data;
+									vm.setPage(1);					
               });
           }
 

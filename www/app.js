@@ -15,10 +15,13 @@
 		'app_components',
 		'app_interceptors',
 		'satellizer',
-		'ngFileUpload'
+		'ngFileUpload',
+		'underscore'
 	])
+	.constant('_', window._)
+  // use in views, ng-repeat="x in _.range(3)"
 	.run(function  ($rootScope, $state, authenticateService) {
-
+		$rootScope._ = window._;
 		  // $rootScope.$on('$routeChangeStart', function(event, next, current) {
       //           if (next.auth) {
       //               if (!authenticateService.getToken()) {
