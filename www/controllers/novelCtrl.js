@@ -16,6 +16,7 @@
         vm.novel = {};
         vm.goNovel = goNovel;
         vm.novo = true;
+        vm.loading = true;	        
 
 
         if ($state.current.name === 'novel')
@@ -26,7 +27,6 @@
           var id = novelService.get()._id;
           novelAPIService.getNovel(id).then(function(result){
             vm.novel = result.data;
-            console.log('result', result.data);
           });
         }
 
@@ -37,7 +37,6 @@
 
         function editNovel(novel){
           novelAPIService.update(novel).then(function (result) {
-            console.log('resultado de update novel', result);
              $state.go('novel');
           });
         }
@@ -49,8 +48,8 @@
 
         function getNovels(){
           novelAPIService.getNovels().then(function(result){
-            console.log('getNovels', result);
               vm.novels = result.data;
+              vm.loading = false;	              
           });
         }
 

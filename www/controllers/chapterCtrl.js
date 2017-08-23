@@ -15,6 +15,7 @@
 					vm.chapter = {};
 					vm.novo = true;
 					vm.deleteChapter = deleteChapter;
+					vm.loading = true;
 
           var novel = novelService.get();
 					vm.novel = novel;
@@ -57,8 +58,9 @@
 						param.novel_id = novelService.get()._id;
             chapterAPIService.getAll(param)
               .then(function(result){
-									vm.chapters = result.data;
-									vm.setPage(1);					
+									vm.chapters = _.reverse(result.data);
+									vm.setPage(1);		
+									vm.loading = false;	
               });
           }
 
