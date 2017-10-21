@@ -1,44 +1,112 @@
 <div class="row">
   <h3>Novel: {{vm.novel.name}}</h3>
   <button class="btn btn-primary" ui-sref="novel">Lista de Novels</button>
-
+  <div class="col-md-12 bg-danger aviso" ng-if="vm.formValidation"  style="margin-top: 20px;">
+    <p style="padding: 5px; margin: 0;">
+        Alguns campos não foram preenchidos
+    </p>
+  </div>
   <div class="col-md-12">
     <form class="form form-horizontal" name="form" novalidate style="padding-top: 20px;">
-      <div class="form-group">
-        <label>Número do Capitulo</label><br/>
-        <p class="text-primary">Exemplo: 1, 22, 33 (não colocar o 0 na frente)</p>
-        <input class="form-control" ng-model="vm.chapter.number" type="number" name="nome" placeholder="Insira o Numero" required>
+
+      <div class="row">
+        <div class="col-sm-4 col-md-3">
+          <div class="form-group" ng-class="{ 'has-error': !vm.chapter.number, 'has-success': vm.chapter.number }">
+            <label>Número do Capitulo</label><br/>
+            <input
+              class="form-control"
+              ng-model="vm.chapter.number"
+              type="number"
+              name="numero"
+              placeholder="Ex: 1, 22, 33 (sem 0)"
+              required
+            >
+          </div>
+        </div>
       </div>
 
-      <div class="form-group">
-        <label>Título</label><br/>
-        <p class="text-primary">Exemplo: Um Novo Começo (colocar com letra maíscula as principais palavras)</p>
-        <input class="form-control" ng-model="vm.chapter.title" type="text" name="nome" placeholder="Insira o Título" required>
+      <div class="row">
+        <div class="col-xs-12 col-sm-4 col-md-3">
+          <div class="row">
+            <div class="col-xs-12 col-sm-11 col-md-11">
+              <div class="form-group" ng-class="{ 'has-error': !vm.chapter.translators, 'has-success': vm.chapter.translators }">
+                  <label>Tradutor(es)</label><br/>
+                  <input
+                    class="form-control"
+                    ng-model="vm.chapter.translators"
+                    type="text"
+                    name="nome"
+                    placeholder="Ex: Owener, sOzax"
+                    required
+                  >
+                </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-5 col-md-4">
+          <div class="form-group" ng-class="{ 'has-error': !vm.chapter.revisors, 'has-success': vm.chapter.revisors }">
+              <label>Revisor(es)</label><br/>
+              <input
+                class="form-control"
+                ng-model="vm.chapter.revisors"
+                type="text"
+                name="revisores"
+                placeholder="Ex: Owener, Papai Noel"
+                required
+              >
+            </div>
+        </div>
       </div>
 
-      <div class="form-group">
+      <div class="row">
+        <div class="col-xs-12 col-sm-9 col-md-7">
+            <div class="form-group" ng-class="{ 'has-error': !vm.chapter.title, 'has-success': vm.chapter.title }">
+                <label>Título</label><br/>
+                <input
+                  class="form-control"
+                  ng-model="vm.chapter.title"
+                  type="text"
+                  name="titulo"
+                  placeholder="Ex: Um Novo Começo (colocar com letra maíscula as principais palavras)"
+                  required
+                >
+              </div>
+        </div>
+      </div>
+
+      <div class="form-group" ng-class="{ 'has-error': !vm.chapter.content, 'has-success': vm.chapter.content }">
         <label>Conteúdo do Capítulo</label><br/>
-        <p class="text-primary">Exemplo: Colocar todo capítulo de vez, CTRL + C e CTRL + V</p>
-        <textarea class="form-control" name="conteudo" rows="6" ng-model="vm.chapter.content" placeholder="Insira o capítulo" required>
+        <textarea
+          class="form-control"
+          name="conteudo"
+          rows="6"
+          ng-model="vm.chapter.content"
+          placeholder="Ex: CTRL + C e CTRL + V no capítulo"
+          required
+        >
         </textarea>
       </div>
 
       <div class="form-group">
-        <label>Tradutores</label><br/>
-        <p class="text-primary">Exemplo: Quando houver mais de 1 separar por vírgula: Owener, sOzax</p>
-        <input class="form-control" ng-model="vm.chapter.translators" type="text" name="nome" placeholder="Insira os Tradutores"
-          required>
-      </div>
-
-      <div class="form-group">
-        <label>Revisores</label><br/>
-        <p class="text-primary">Exemplo: Quando houver mais de 1 separar por vírgula: Owener, sOzax</p>
-        <input class="form-control" ng-model="vm.chapter.revisors" type="text" name="nome" placeholder="Insira o Nome" required>
-      </div>
-      <div class="form-group">
         <p class="text-warning">
-          <button ng-if="vm.novo" class="btn btn-success btn-lg" type="submit" ng-click="vm.createChapter(vm.chapter)">Cadastrar</button>
-          <button ng-if="!vm.novo" class="btn btn-success btn-lg" type="submit" ng-click="vm.editChapter(vm.chapter)">Atualizar</button>          Preencher todos os campos</p>
+          <button
+            ng-if="vm.novo"
+            class="btn btn-success btn-lg"
+            type="submit"
+            ng-click="form.$valid ? vm.createChapter(vm.chapter) : vm.submitForm(true)"
+          >
+            Cadastrar
+          </button>
+          <button
+            ng-if="!vm.novo"
+            class="btn btn-success btn-lg"
+            type="submit"
+            ng-click="form.$valid ? vm.editChapter(vm.chapter) : vm.submitForm(true)"
+          >
+            Atualizar
+        </button>
+        </p>
         <br />
       </div>
     </form>

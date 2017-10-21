@@ -16,8 +16,8 @@
         vm.novel = {};
         vm.goNovel = goNovel;
         vm.novo = true;
-        vm.loading = true;	        
-
+        vm.loading = true;
+        vm.formValidation = false;
 
         if ($state.current.name === 'novel')
             getNovels();
@@ -49,7 +49,7 @@
         function getNovels(){
           novelAPIService.getNovels().then(function(result){
               vm.novels = result.data;
-              vm.loading = false;	              
+              vm.loading = false;
           });
         }
 

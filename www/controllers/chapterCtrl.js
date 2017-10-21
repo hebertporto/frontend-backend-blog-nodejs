@@ -16,6 +16,7 @@
 					vm.novo = true;
 					vm.deleteChapter = deleteChapter;
 					vm.loading = true;
+					vm.submitForm = submitForm;
 
           var novel = novelService.get();
 					vm.novel = novel;
@@ -41,6 +42,17 @@
 							vm.chapter = result.data;
 						});
 					}
+
+					if ($state.current.name === 'chapter-new') {
+						var ch = chapterService.get();
+						vm.chapter.translators = ch.translators
+						vm.chapter.revisors = ch.revisors
+					}
+
+					function submitForm(valueBoolean) {
+            vm.formValidation = valueBoolean;
+					}
+
 					function deleteChapter(id){
 						chapterAPIService.deletar(id)
 							.then(function(result){
@@ -59,8 +71,12 @@
             chapterAPIService.getAll(param)
               .then(function(result){
 									vm.chapters = _.reverse(result.data);
-									vm.setPage(1);		
-									vm.loading = false;	
+									if(vm.chapters.length > 0)
+										chapterService.set(vm.chapters[0]);
+									else
+										chapterService.set({})
+									vm.setPage(1);
+									vm.loading = false;
               });
           }
 
