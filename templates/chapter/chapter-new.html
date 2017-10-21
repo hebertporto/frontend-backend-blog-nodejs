@@ -6,6 +6,12 @@
         Alguns campos não foram preenchidos
     </p>
   </div>
+  <div class="col-md-12 bg-warning aviso" ng-if="vm.lastCreated.number" style="margin-top: 20px;">
+    <p style="padding: 5px; margin: 0;">
+      Ultimo capítulo adicionado<br />
+      {{vm.lastCreated.number}} | {{vm.lastCreated.title}}
+    </p>
+  </div>
   <div class="col-md-12">
     <form class="form form-horizontal" name="form" novalidate style="padding-top: 20px;">
 

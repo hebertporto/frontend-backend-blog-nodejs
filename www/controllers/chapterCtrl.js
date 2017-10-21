@@ -45,6 +45,7 @@
 
 					if ($state.current.name === 'chapter-new') {
 						var ch = chapterService.get();
+						vm.lastCreated = ch;
 						vm.chapter.translators = ch.translators
 						vm.chapter.revisors = ch.revisors
 					}
@@ -71,8 +72,10 @@
             chapterAPIService.getAll(param)
               .then(function(result){
 									vm.chapters = _.reverse(result.data);
-									if(vm.chapters.length > 0)
-										chapterService.set(vm.chapters[0]);
+									if(vm.chapters.length > 0) {
+										var lastCreated = _.orderBy(vm.chapters, ['created_at'], ['desc']);
+										chapterService.set(lastCreated[0]);
+									}
 									else
 										chapterService.set({})
 									vm.setPage(1);
